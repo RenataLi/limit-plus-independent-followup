@@ -1,0 +1,67 @@
+{
+  "artifacts": {
+    "atomic_metrics": "atomic_metrics.csv",
+    "atomic_summary": "atomic_summary.csv",
+    "audit": "data_audit.json",
+    "bootstrap": "bootstrap_deltas.csv",
+    "error_decomposition": "error_decomposition.csv",
+    "per_query": "per_query_metrics.csv",
+    "runs": "runs/*.jsonl.gz",
+    "summary": "summary_metrics.csv"
+  },
+  "bm25": {
+    "average_document_length": 118.85478,
+    "b": 0.75,
+    "canonical_doc_id_field": "_id",
+    "corpus_size": 50000,
+    "deterministic_ablation": "corpus_ordinal",
+    "epsilon": 0.25,
+    "implementation": "independent inverted-index BM25Okapi",
+    "indexed_field": "text",
+    "k1": 1.5,
+    "ranking_expression": "score descending; equal-score ties by corpus ordinal",
+    "tie_break": "corpus_ordinal",
+    "vocabulary_size": 50685
+  },
+  "bootstrap": {
+    "paired": true,
+    "samples": 10000,
+    "seed": 20260804,
+    "stratified_by": "template"
+  },
+  "composition": {
+    "ablation_negation": "truncated negative top-L list",
+    "atomic_query": "Who likes {attribute}?",
+    "decomposition": "oracle template metadata (not automatic language parsing)",
+    "depths": [
+      10,
+      25,
+      50,
+      100,
+      250,
+      500,
+      1000
+    ],
+    "final_k": 100,
+    "full_query_pool": 1000,
+    "fusion": "RRF, constant=60",
+    "primary_negation": "exact lexical attribute-membership filter",
+    "symbolic_hybrid": "union positive atomic top-L lists, then verify the complete predicate against exact parsed corpus attributes"
+  },
+  "dataset_revisions": {
+    "limit_huggingface": "215834026c13176e520b3bc9d0a055099537ef99",
+    "limit_plus_github": "0a4105a328474d4a4c58b8e4fc613ec05c59fc22"
+  },
+  "experiment": "Constraint-aware retrieve-then-compose on LIMIT+",
+  "runtime": {
+    "atomic_retrieval_seconds": 1.0921453000046313,
+    "full_bm25_seconds": 0.7208719000045676,
+    "index_seconds": 12.05620820002514,
+    "nltk": "3.9.1",
+    "numpy": "2.2.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "total_seconds": 58.77258759998949
+  },
+  "tokenizer": "nltk"
+}

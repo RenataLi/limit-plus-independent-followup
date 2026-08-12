@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "limitplus-followup"
+version = "0.1.0"
+description = "Independent candidate-generation and constraint-verification diagnostics for LIMIT+"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy==2.2.6",
+  "nltk==3.9.1",
+]
+
+[project.optional-dependencies]
+brief = ["reportlab==4.4.9"]
+
+[project.scripts]
+limitplus = "limitplus.cli:main"
+
+[project.urls]
+Repository = "https://github.com/RenataLi/limit-plus-independent-followup"
+Paper = "https://arxiv.org/abs/2605.03824"
+
+[tool.setuptools.packages.find]
+where = ["src"]

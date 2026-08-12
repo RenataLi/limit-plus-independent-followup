@@ -1,0 +1,123 @@
+{
+  "bootstrap": {
+    "draws": 10000,
+    "scope_note": "Paired query interval over the full released benchmark",
+    "seed": 20260804,
+    "stratification": "template"
+  },
+  "comparison_mean": {
+    "BM25": {
+      "candidate_recall": 0.9811663805556483,
+      "ceiling_normalized_recall_at_100": 0.8746489816927884,
+      "ndcg_at_100": 0.8012878530928152,
+      "ndcg_at_20": 0.7853256160343247,
+      "recall_at_100": 0.8369301694523535
+    },
+    "Qwen/Qwen3-Reranker-4B": {
+      "candidate_recall": 0.9811663805556483,
+      "ceiling_normalized_recall_at_100": 0.9548194665041873,
+      "ndcg_at_100": 0.8979325932026712,
+      "ndcg_at_20": 0.8862284647703489,
+      "recall_at_100": 0.9036073758347879
+    },
+    "exact_constraint_verifier": {
+      "candidate_recall": 0.9811663805556483,
+      "ceiling_normalized_recall_at_100": 0.9838810520521861,
+      "ndcg_at_100": 0.9858516163856,
+      "ndcg_at_20": 0.9914261260246955,
+      "recall_at_100": 0.9274954079426914
+    }
+  },
+  "data_audit_matches": 700,
+  "instruction": "Given a set-compositional entity-search query, judge whether the document satisfies the complete Boolean information need. Treat conjunction, disjunction, and exclusion literally; a document is relevant only when the entire query is satisfied.",
+  "mean": {
+    "candidate_recall": 0.9811663805556483,
+    "ceiling_normalized_recall_at_100": 0.9548194665041873,
+    "ndcg_at_100": 0.8979325932026712,
+    "ndcg_at_20": 0.8862284647703489,
+    "recall_at_100": 0.9036073758347879
+  },
+  "model": "Qwen/Qwen3-Reranker-4B",
+  "paired_delta_exact_verifier_vs_qwen": {
+    "ceiling_normalized_recall_at_100": {
+      "ci_high": 0.03458491758960258,
+      "ci_low": 0.02395081189701004,
+      "delta": 0.02906158554799876,
+      "probability_positive": 1.0
+    },
+    "ndcg_at_100": {
+      "ci_high": 0.09618911667813117,
+      "ci_low": 0.07988065675870405,
+      "delta": 0.08791902318292887,
+      "probability_positive": 1.0
+    },
+    "ndcg_at_20": {
+      "ci_high": 0.11575024142967663,
+      "ci_low": 0.0948990168792711,
+      "delta": 0.10519766125434643,
+      "probability_positive": 1.0
+    },
+    "recall_at_100": {
+      "ci_high": 0.028816840212080096,
+      "ci_low": 0.01948673553454095,
+      "delta": 0.0238880321079035,
+      "probability_positive": 1.0
+    }
+  },
+  "paired_delta_vs_bm25": {
+    "ceiling_normalized_recall_at_100": {
+      "ci_high": 0.09186526436687237,
+      "ci_low": 0.06847561588461046,
+      "delta": 0.08017048481139893,
+      "probability_positive": 1.0
+    },
+    "ndcg_at_100": {
+      "ci_high": 0.11036457842108535,
+      "ci_low": 0.08321442794167684,
+      "delta": 0.09664474010985594,
+      "probability_positive": 1.0
+    },
+    "ndcg_at_20": {
+      "ci_high": 0.11521457281743767,
+      "ci_low": 0.08674213213391474,
+      "delta": 0.10090284873602429,
+      "probability_positive": 1.0
+    },
+    "recall_at_100": {
+      "ci_high": 0.07743922179268915,
+      "ci_low": 0.056138660913407495,
+      "delta": 0.06667720638243442,
+      "probability_positive": 1.0
+    }
+  },
+  "per_template": null,
+  "pool": "honest BM25 top-1000; no gold injection",
+  "protocol_fingerprint": "283963be9bc46420fd98bb703e3cc4c1ccc5885bdcc554a3de3b2a1caae2e81c",
+  "queries": 700,
+  "revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+  "runtime": {
+    "accelerate": "1.10.1",
+    "attention_implementation": "sdpa",
+    "batch_size": 64,
+    "cuda_runtime": "12.8",
+    "dtype": "bfloat16",
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "huggingface_hub": "0.36.0",
+    "max_length": 384,
+    "model_load_seconds_this_run": 44.33053680000012,
+    "os": "Windows-11-10.0.26200-SP0",
+    "pairs_per_second_all_checkpoints": 67.51011200371742,
+    "pairs_scored_all_checkpoints": 700000,
+    "projected_700_query_hours_at_observed_throughput": 2.880226956722238,
+    "python": "3.12.10",
+    "safetensors": "0.6.2",
+    "score": "final-token logit(yes) - logit(no)",
+    "scoring_seconds_all_checkpoints": 10368.817044200056,
+    "scoring_seconds_this_run": 10368.817044200056,
+    "tf32_matmul": true,
+    "tokenizers": "0.22.1",
+    "torch": "2.8.0+cu128",
+    "transformers": "4.56.2"
+  },
+  "selection": "all released queries"
+}

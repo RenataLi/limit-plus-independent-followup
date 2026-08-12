@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Full Qwen constraint-gap comparison</title>
+<style>
+:root { --foreground:#17232d; --muted-foreground:#5c6a73; --border:#d4e0e6; --viz-series-1:#2477a8; --viz-series-2:#159a9c; --viz-series-3:#8a5cf5; --font-size-base:12px; }
+body { margin:0; padding:32px; background:#f7fafb; color:var(--foreground); font-family:Arial,Helvetica,sans-serif; }
+main { max-width:1000px; margin:0 auto; padding:24px; background:white; border:1px solid var(--border); border-radius:12px; }
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+</style>
+</head>
+<body><main><div id="limitplus-full-qwen-viz">
+  <svg class="fq-chart" viewBox="0 0 736 492" role="img" aria-labelledby="fq-title fq-desc">
+    <title id="fq-title">Full LIMIT+ same-pool comparison</title>
+    <desc id="fq-desc">Two aligned horizontal bar charts compare BM25, full Qwen reranking, exact verification over the same unmodified BM25 pool, a higher-budget hybrid, and the Boolean oracle for Recall at 100 and nDCG at 20.</desc>
+
+    <text class="fq-panel-title" x="154" y="24">Recall@100</text>
+    <text class="fq-panel-note" x="154" y="43">700 queries; BM25, Qwen, and exact use the identical top-1,000 pool</text>
+    <g class="fq-grid">
+      <line x1="290" x2="290" y1="61" y2="217"></line>
+      <line x1="394" x2="394" y1="61" y2="217"></line>
+      <line x1="498" x2="498" y1="61" y2="217"></line>
+      <line x1="602" x2="602" y1="61" y2="217"></line>
+      <line x1="706" x2="706" y1="61" y2="217"></line>
+    </g>
+    <g class="fq-axis">
+      <text x="290" y="229">80</text><text x="394" y="229">85</text>
+      <text x="498" y="229">90</text><text x="602" y="229">95</text>
+      <text x="706" y="229">100%</text>
+    </g>
+    <g class="fq-labels">
+      <text x="6" y="82">Reproduced BM25</text>
+      <text x="6" y="113">Full Qwen reranker</text>
+      <text x="6" y="144">Same-pool exact verify</text>
+      <text x="6" y="175">Hybrid pool + verify</text>
+      <text x="6" y="206">Boolean oracle</text>
+    </g>
+    <g class="fq-bars">
+      <rect class="fq-baseline" x="290" y="68" width="77" height="18" rx="3"></rect>
+      <rect class="fq-neural" x="290" y="99" width="215" height="18" rx="3"></rect>
+      <rect class="fq-symbolic" x="290" y="130" width="265" height="18" rx="3"></rect>
+      <rect class="fq-symbolic" x="290" y="161" width="282" height="18" rx="3"></rect>
+      <rect class="fq-oracle" x="290" y="192" width="295" height="18" rx="3"></rect>
+    </g>
+    <g class="fq-values">
+      <text x="374" y="82">83.7</text><text x="512" y="113">90.4</text>
+      <text x="562" y="144">92.7</text><text x="579" y="175">93.6</text>
+      <text x="592" y="206">94.2</text>
+    </g>
+
+    <text class="fq-panel-title" x="154" y="270">nDCG@20</text>
+    <text class="fq-panel-note" x="154" y="289">Qwen closes 49% of the same-pool exact upper-bound gap</text>
+    <g class="fq-grid">
+      <line x1="290" x2="290" y1="306" y2="462"></line>
+      <line x1="394" x2="394" y1="306" y2="462"></line>
+      <line x1="498" x2="498" y1="306" y2="462"></line>
+      <line x1="602" x2="602" y1="306" y2="462"></line>
+      <line x1="706" x2="706" y1="306" y2="462"></line>
+    </g>
+    <g class="fq-axis">
+      <text x="290" y="478">75</text><text x="394" y="478">81.25</text>
+      <text x="498" y="478">87.5</text><text x="602" y="478">93.75</text>
+      <text x="706" y="478">100%</text>
+    </g>
+    <g class="fq-labels">
+      <text x="6" y="327">Reproduced BM25</text>
+      <text x="6" y="358">Full Qwen reranker</text>
+      <text x="6" y="389">Same-pool exact verify</text>
+      <text x="6" y="420">Hybrid pool + verify</text>
+      <text x="6" y="451">Boolean oracle</text>
+    </g>
+    <g class="fq-bars">
+      <rect class="fq-baseline" x="290" y="313" width="59" height="18" rx="3"></rect>
+      <rect class="fq-neural" x="290" y="344" width="227" height="18" rx="3"></rect>
+      <rect class="fq-symbolic" x="290" y="375" width="402" height="18" rx="3"></rect>
+      <rect class="fq-symbolic" x="290" y="406" width="413" height="18" rx="3"></rect>
+      <rect class="fq-oracle" x="290" y="437" width="416" height="18" rx="3"></rect>
+    </g>
+    <g class="fq-values">
+      <text x="356" y="327">78.5</text><text x="524" y="358">88.6</text>
+      <text x="664" y="389">99.1</text><text x="664" y="420">99.8</text>
+      <text x="664" y="451">100</text>
+    </g>
+  </svg>
+  <div class="fq-legend text-small" aria-hidden="true">
+    <span><i class="fq-swatch fq-baseline"></i> lexical baseline</span>
+    <span><i class="fq-swatch fq-neural"></i> text-only neural reranking</span>
+    <span><i class="fq-swatch fq-symbolic"></i> qrels-free symbolic verification</span>
+    <span><i class="fq-swatch fq-oracle"></i> benchmark ceiling</span>
+  </div>
+  <p class="sr-only">On all 700 LIMIT+ queries, Qwen reranking over the unchanged BM25 top-1000 pool improves Recall at 100 from 83.7 to 90.4 percent and nDCG at 20 from 78.5 to 88.6 percent. Exact constraint verification on that same pool reaches 92.7 percent recall and 99.1 percent nDCG, leaving a substantial verification gap.</p>
+</div>
+
+<style>
+  #limitplus-full-qwen-viz { width: 100%; color: var(--foreground); }
+  #limitplus-full-qwen-viz .fq-chart { display: block; width: 100%; height: auto; overflow: visible; }
+  #limitplus-full-qwen-viz text { fill: var(--foreground); font-family: inherit; font-size: var(--font-size-base); font-weight: 400; }
+  #limitplus-full-qwen-viz .fq-panel-title { font-weight: 500; }
+  #limitplus-full-qwen-viz .fq-panel-note,
+  #limitplus-full-qwen-viz .fq-axis text { fill: var(--muted-foreground); }
+  #limitplus-full-qwen-viz .fq-grid line { stroke: var(--border); stroke-width: 1; }
+  #limitplus-full-qwen-viz .fq-bars .fq-baseline,
+  #limitplus-full-qwen-viz .fq-swatch.fq-baseline { fill: var(--viz-series-1); background: var(--viz-series-1); }
+  #limitplus-full-qwen-viz .fq-bars .fq-neural,
+  #limitplus-full-qwen-viz .fq-swatch.fq-neural { fill: var(--viz-series-3); background: var(--viz-series-3); }
+  #limitplus-full-qwen-viz .fq-bars .fq-symbolic,
+  #limitplus-full-qwen-viz .fq-swatch.fq-symbolic { fill: var(--viz-series-2); background: var(--viz-series-2); }
+  #limitplus-full-qwen-viz .fq-bars .fq-oracle,
+  #limitplus-full-qwen-viz .fq-swatch.fq-oracle { fill: var(--muted-foreground); background: var(--muted-foreground); opacity: .72; }
+  #limitplus-full-qwen-viz .fq-values text { font-weight: 500; }
+  #limitplus-full-qwen-viz .fq-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center; color: var(--muted-foreground); }
+  #limitplus-full-qwen-viz .fq-legend span { display: inline-flex; align-items: center; gap: 7px; }
+  #limitplus-full-qwen-viz .fq-swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; }
+  @media (max-width: 520px) {
+    #limitplus-full-qwen-viz .fq-legend { justify-content: flex-start; }
+  }
+</style>
+
+</main></body></html>

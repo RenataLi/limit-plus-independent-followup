@@ -1,0 +1,61 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  unit-and-pdf:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install base and PDF dependencies
+        run: python -m pip install -e ".[brief]"
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+      - name: Build research brief
+        run: python scripts/build_brief.py
+      - name: Verify PDF exists
+        run: python -c "from pathlib import Path; p=Path('artifacts/limit_plus_independent_followup_brief.pdf'); assert p.stat().st_size > 5000"
+
+  portable-full-cpu-reproduction:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install base package
+        run: python -m pip install -e .
+      - name: Download pinned data
+        run: python scripts/download_data.py --data-dir data/raw
+      - name: Audit source data
+        run: python -m limitplus audit --data-dir data/raw
+      - name: Reproduce portable full CPU experiment
+        run: >-
+          python -m limitplus run
+          --data-dir data/raw
+          --output-dir results/reproduction_cpu_portable
+          --depths 10,25,50,100,250,500,1000
+          --tokenizer nltk
+          --tie-break corpus_ordinal
+          --bootstrap-samples 10000
+      - name: Compare against portable committed reference
+        run: >-
+          python scripts/verify_cpu_reproduction.py
+          --reference-dir results/corpus_ordinal_reference
+          --reproduction-dir results/reproduction_cpu_portable

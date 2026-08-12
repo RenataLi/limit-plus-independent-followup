@@ -1,0 +1,31 @@
+{
+  "canonical_plan_text_matches": 700,
+  "checksums": {
+    "limit_corpus.jsonl": "10209a6916e029c199676caec3349cb925e2a74451161899c30c36e1b9032f82",
+    "limit_plus_queries.jsonl": "c412df625e1530e81012e31e95fe6f339f5e7027f14acdffc8fe0e348eef55cd",
+    "limit_qrels.jsonl": "a4f9b25b694623c240c6499fb8d8a4896355db9c840f29bd14580d0d4100ea89",
+    "limit_queries.jsonl": "1ead4c54487728173aa1433778a2ab0f4cf1cf8aeeedb886c05238b32d818594"
+  },
+  "corpus_documents": 50000,
+  "exact_boolean_oracle_matches": 700,
+  "exact_boolean_oracle_mismatches": 0,
+  "gold_documents_total": 25860,
+  "gold_size_max": 171,
+  "gold_size_mean": 36.94285714285714,
+  "gold_size_min": 1,
+  "limit_plus_queries": 700,
+  "parsed_attributes": 1848,
+  "referenced_unique_documents": 19435,
+  "template_counts": {
+    "_": 100,
+    "_ or _": 100,
+    "_ or _ or _": 100,
+    "_ that are also _": 100,
+    "_ that are also _ but not _": 100,
+    "_ that are also both _ and _": 100,
+    "_ that are not _": 100
+  },
+  "unique_corpus_ids": 50000,
+  "unknown_attributes": 0,
+  "unknown_gold_ids": 0
+}
